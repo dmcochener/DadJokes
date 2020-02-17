@@ -6,32 +6,38 @@
     <div>
         @if (Model["shortJoke"].Count > 0)
         {
-            <div>
-                <p>These are the short jokes matching your search:</p>
+            <div class="text-center">
+                <h3 class="text-primary list-group-item-heading">These are the short jokes matching your search:</h3>
+                <ul class="list-group">
                 @foreach (var joke in Model["shortJoke"])
                 {
-                    <p>@joke.HighlightContent</p>
+                    <li class="list-group-item">@joke.HighlightContent</li>
                 }
+                </ul>
             </div>
         }
         @if (Model["midJoke"].Count > 0)
         {
-            <div>
-                <p>These are the mid-length jokes matching your search:</p>
+            <div class="text-center">
+                <h3 class="text-success list-group-item-heading">These are the mid-length jokes matching your search:</h3>
+                <ul class="list-group">
                 @foreach (var joke in Model["midJoke"])
                 {
-                    <p>@joke.HighlightContent</p>
+                    <li class="list-group-item">@joke.HighlightContent</li>
                 }
+                </ul>
             </div>
         }
         @if (Model["longJoke"].Count > 0)
         {
-            <div>
-                <p>These are the long jokes matching your search:</p>
+            <div class="text-center">
+                <h3 class="text-danger list-group-item-heading">These are the long jokes matching your search:</h3>
+                <ul class="list-group">
                 @foreach (var joke in Model["longJoke"])
                 {
-                    <p>@joke.HighlightContent</p>
+                    <li class="list-group-item">@joke.HighlightContent</li>
                 }
+                </ul>
             </div>
         }
     </div>

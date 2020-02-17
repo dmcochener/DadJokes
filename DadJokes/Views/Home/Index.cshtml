@@ -2,23 +2,20 @@
     ViewBag.Title = "Home Page";
 }
 
-<div class="jumbotron">
-    <h1>Can Haz Dad Jokes?</h1>
-    <p class="lead">Utliizing an API service to find random or search based Dad Jokes.</p>
-</div>
+
 
 <div>
     @using (Html.BeginForm("ByTerm", "Home"))
     {
-        <div class="text-center">
+        <div class="text-center list-group-item-heading">
             @Html.TextBox("term")
         </div>
         <div class="text-center">
-            <button type="submit" class="btn btn-default">Search By Term</button>
+            <button type="submit" class="btn btn-default btn-primary">Search By Term</button>
         </div>
     }
-
+    <hr />
     <div class="text-center">
-        <p><a class="btn btn-default" href=@Url.Action("Random")>Random Joke</a></p>
+        <p><a class="btn btn-default btn-success" href=@Url.Action("Random")>Random Joke</a></p>
     </div>
 </div>

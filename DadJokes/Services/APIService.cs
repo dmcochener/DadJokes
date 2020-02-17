@@ -12,73 +12,67 @@ using System.Web.Http;
 
 namespace DadJokes.Services
 {
-    public class APIService: ApiController
+    public class APIService : ApiController
     {
-        public async Task<Joke> GetRandomJoke(string url)
+        public JokeResponse GetRandomJoke(string url)
         {
-            HttpResponseMessage response = APIConnect(url).Result;
-            if (response.IsSuccessStatusCode)
-            {
-                var responseString = await response.Content.ReadAsStringAsync();
-                JokeResponse jsonString = JsonConvert.DeserializeObject<JokeResponse>(responseString);
-                var result = new Joke
-                {
-                    id = jsonString.id,
-                    joke = jsonString.joke
-                };
-                return result;
-             }
-            else
-            {
-                var result = new Joke { joke = "Something went wrong and we didn't get a joke." };
-                return result;
-            }
+            //Gets response from API
+            string responseString = APIConnect(url).Result;
+            //Converts Json String to joke response type object
+            JokeResponse jokeObject = JsonConvert.DeserializeObject<JokeResponse>(responseString);
+
+            return jokeObject;
+
         }
 
-        public async Task<List<DisplayJoke>> GetManyJokes(string url)
+        public List<DisplayJoke> GetManyJokes(string url)
         {
-            HttpResponseMessage response = APIConnect(url).Result;
-            if (response.IsSuccessStatusCode)
+            //Gets Json string of response
+            string responseString = APIConnect(url).Result;
+            //Converts response into Multi Joke Object
+            MultiJokeResponse multiJoke = JsonConvert.DeserializeObject<MultiJokeResponse>(responseString);
+            //Creates new list to store jokes
+            var result = new List<DisplayJoke>();
+            //Iterates through list of jokes to create display jokes for sorting and filtering
+            foreach (var item in multiJoke.results)
             {
-                var responseString = await response.Content.ReadAsStringAsync();
-                MultiJokeResponse jsonString = JsonConvert.DeserializeObject<MultiJokeResponse>(responseString);
-                var result = new List<DisplayJoke>();
-                foreach(var item in jsonString.results)
+                var display = new DisplayJoke
                 {
-                    var display = new DisplayJoke
-                    {
-                        id = item.id,
-                        joke = item.joke
-                    };
-                    result.Add(display);
-
+                    id = item.id,
+                    joke = item.joke
                 };
-                return result;
+                result.Add(display);
 
-            }
-            else
-            {
-                var result = new List<DisplayJoke>{
-                    new DisplayJoke{ joke = "Something went wrong and we didn't get any joke." }
-                };
-                return result;
-            }
+            };
+            return result;
+
         }
 
-        public async Task<HttpResponseMessage> APIConnect(string url)
+        public async Task<string> APIConnect(string url)
         {
+            //Sets up HttpClient for accessing API
             using (HttpClient client = new HttpClient())
             {
                 client.BaseAddress = new Uri(url);
                 client.DefaultRequestHeaders.Accept.Clear();
                 client.DefaultRequestHeaders.Accept.Add(
                     new MediaTypeWithQualityHeaderValue("application/json"));
-
+                //Gets response from url passed in
                 HttpResponseMessage response = await client.GetAsync(url).ConfigureAwait(false);
-
-                return response;
+                //Checks for success
+                if (response.IsSuccessStatusCode)
+                {
+                    //Converts response to Json string
+                    string responseString = await response.Content.ReadAsStringAsync();
+                    return responseString;
+                }
+                //Throws an error if there was a bad response code.
+                else
+                {
+                    throw new Exception("Something went wrong and we didn't connect to the API.");
+                }
             }
-        }
 
+        }
     }
 }

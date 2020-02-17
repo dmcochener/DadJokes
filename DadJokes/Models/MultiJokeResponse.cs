@@ -5,6 +5,8 @@ using System.Web;
 
 namespace DadJokes.Models
 {
+    //Matches the full Json object returned by search
+    //Uses the base Joke for the results array
     public class MultiJokeResponse
     {
         public int current_page { get; set; }

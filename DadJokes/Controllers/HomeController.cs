@@ -24,7 +24,7 @@ namespace DadJokes.Controllers
                 //Get the url for a basic random search
                 string url = DadUrl.DadJokeUrl();
                 //Get the processed joke from the API service
-                Joke joke = service.GetRandomJoke(url).Result;
+                JokeResponse joke = service.GetRandomJoke(url);
                 //Send the joke to the view
                 return View(joke);
             }
@@ -39,7 +39,7 @@ namespace DadJokes.Controllers
                 // Get the url for the specific search term
                 string url = DadUrl.DadJokeUrl(term);
                 //Get the processed list of jokes from the API service
-                List<DisplayJoke> freshJokes = service.GetManyJokes(url).Result;
+                List<DisplayJoke> freshJokes = service.GetManyJokes(url);
                 //Set the word count for all the jokes
                 List<DisplayJoke> countedJokes = CountWords.SetWordCount(freshJokes);
                 //Capitalize (aka highlight) the term in all jokes

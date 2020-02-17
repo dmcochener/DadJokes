@@ -25,7 +25,7 @@ namespace DadJokes.Tests.Services
             var response = service.APIConnect(url);
 
             //Assert
-            Assert.IsTrue(response.Result.IsSuccessStatusCode);
+            Assert.IsNotNull(response.Result);
         }
 
         [TestMethod]
@@ -35,7 +35,7 @@ namespace DadJokes.Tests.Services
             string url = "https://icanhazdadjoke.com/j/EQKZDIeah";
 
             //Act
-            Joke _joke = service.GetRandomJoke(url).Result;
+            Joke _joke = service.GetRandomJoke(url);
 
             //Assert
             Assert.AreEqual(_joke.id, "EQKZDIeah");
@@ -49,7 +49,7 @@ namespace DadJokes.Tests.Services
             string url = "https://icanhazdadjoke.com/search?term=funny";
 
             //Act
-            List<DisplayJoke> _jokes = service.GetManyJokes(url).Result;
+            List<DisplayJoke> _jokes = service.GetManyJokes(url);
 
             //Assert
             Assert.AreEqual(_jokes.Count, 2);

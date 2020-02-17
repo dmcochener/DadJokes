@@ -8,6 +8,7 @@ namespace DadJokes.Services
     public static class DadUrl
     {
 
+        //Static method to get the basic URL
         public static string DadJokeUrl()
         {
             string url = "https://icanhazdadjoke.com/";
@@ -23,5 +24,7 @@ namespace DadJokes.Services
 
             return url;
         }
+
+        //Could add in future overloads for other options
     }
 }
