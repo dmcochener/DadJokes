@@ -10,17 +10,17 @@ namespace DadJokes.Helpers
     {
         //Creating a simple sort method based on word count
         //This reduces the BigO notation versus the built in Sort method
-        public Dictionary<string,List<Joke>> SortResponses(List<Joke> responses)
+        public Dictionary<string,List<DisplayJoke>> SortResponses(List<DisplayJoke> responses)
         {
-            Dictionary<string, List<Joke>> sortedResponses = new Dictionary<string, List<Joke>>
+            Dictionary<string, List<DisplayJoke>> sortedResponses = new Dictionary<string, List<DisplayJoke>>
             {
-                {"shortJoke", new List<Joke>() },
-                {"midJoke", new List<Joke>() },
-                {"longJoke", new List<Joke>() }
+                {"shortJoke", new List<DisplayJoke>() },
+                {"midJoke", new List<DisplayJoke>() },
+                {"longJoke", new List<DisplayJoke>() }
 
             };
 
-            foreach (Joke joke in responses)
+            foreach (DisplayJoke joke in responses)
             {
                 if (joke.WordCount < 10)
                 {

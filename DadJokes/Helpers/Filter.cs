@@ -9,13 +9,13 @@ namespace DadJokes.Helpers
 {
     public class Filter
     {
-        public List<Joke> HighlightJokeTerm(List<Joke> jokes, string term)
+        public List<DisplayJoke> HighlightJokeTerm(List<DisplayJoke> jokes, string term)
         {
             string replace = term.ToUpper();
             Regex regEx = new Regex(term);
             foreach(var joke in jokes)
             {
-                joke.HighlightContent = regEx.Replace(joke.Content, replace);
+                joke.HighlightContent = regEx.Replace(joke.joke, replace);
             }
             return jokes;
         }

@@ -5,9 +5,9 @@ using System.Web;
 
 namespace DadJokes.Models
 {
-    public class Joke
+    public class JokeResponse: Joke
     {
-        public string id { get; set; }
-        public string joke { get; set; }
+        public int status { get; set; }
+
     }
 }

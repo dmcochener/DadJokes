@@ -17,14 +17,14 @@ namespace DadJokes.Tests.Helpers
         {
             //Arrange
             Sort sorter = new Sort();
-            List<Joke> testJokes = new List<Joke>
+            List<DisplayJoke> testJokes = new List<DisplayJoke>
             {
-                new Joke{WordCount = 5 },
-                new Joke{WordCount = 10},
-                new Joke{WordCount = 15},
-                new Joke{WordCount = 20},
-                new Joke{WordCount = 25},
-                new Joke{WordCount = 30},
+                new DisplayJoke{WordCount = 5 },
+                new DisplayJoke{WordCount = 10},
+                new DisplayJoke{WordCount = 15},
+                new DisplayJoke{WordCount = 20},
+                new DisplayJoke{WordCount = 25},
+                new DisplayJoke{WordCount = 30},
             };
 
             //Act
@@ -42,9 +42,9 @@ namespace DadJokes.Tests.Helpers
         {
             //Arrange
             CountWords counter = new CountWords();
-            List<Joke> testJokes = new List<Joke>
+            List<DisplayJoke> testJokes = new List<DisplayJoke>
             {
-                new Joke {Content = "This is a test for seven words."}
+                new DisplayJoke {joke = "This is a test for seven words."}
             };
 
             //Act
@@ -60,9 +60,9 @@ namespace DadJokes.Tests.Helpers
         {
             //Arrange
             Filter filter = new Filter();
-            List<Joke> testJokes = new List<Joke>
+            List<DisplayJoke> testJokes = new List<DisplayJoke>
             {
-                new Joke {Content = "This is a test for seven words."}
+                new DisplayJoke {joke = "This is a test for seven words."}
             };
 
             //Act

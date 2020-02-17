@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DadJokes.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -15,12 +16,15 @@ namespace DadJokes.Controllers
 
         public ActionResult Random()
         {
-            return View();
+            var joke = new DisplayJoke();
+            return View(joke);
         }
 
+        [HttpPost]
         public ActionResult ByTerm(string term)
         {
-            return View();
+            var jokes = new Dictionary<string, List<DisplayJoke>>();
+            return View(jokes);
         }
     }
 }

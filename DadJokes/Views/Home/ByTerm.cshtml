@@ -1,5 +1,38 @@
-﻿@{
+﻿@model Dictionary<string, List<DadJokes.Models.Joke>>
+@{
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
+    <div>
+        @if (Model["shortJokes"].Count > 0)
+        {
+            <div>
+                <p>These are the short jokes matching your search:</p>
+                @foreach (var joke in Model["shortJokes"])
+                {
+                    <p>joke.HighlightContent</p>
+                }
+            </div>
+        }
+        @if (Model["midJokes"].Count > 0)
+        {
+            <div>
+                <p>These are the mid-length jokes matching your search:</p>
+                @foreach (var joke in Model["shortJokes"])
+                {
+                    <p>joke.HighlightContent</p>
+                }
+            </div>
+        }
+        @if (Model["longJokes"].Count > 0)
+        {
+            <div>
+                <p>These are the long jokes matching your search:</p>
+                @foreach (var joke in Model["shortJokes"])
+                {
+                    <p>joke.HighlightContent</p>
+                }
+            </div>
+        }
+    </div>
 
