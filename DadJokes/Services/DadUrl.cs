@@ -5,10 +5,10 @@ using System.Web;
 
 namespace DadJokes.Services
 {
-    public class DadUrl
+    public static class DadUrl
     {
 
-        public string DadJokeUrl()
+        public static string DadJokeUrl()
         {
             string url = "https://icanhazdadjoke.com/";
 
@@ -17,7 +17,7 @@ namespace DadJokes.Services
 
         //Overload method for search term
         //Set to default 1 page and 30 jokes
-        public string DadJokeUrl(string term)
+        public static string DadJokeUrl(string term)
         {
             string url = String.Format("https://icanhazdadjoke.com/search?term={0}&page=1&limit=30", term);
 

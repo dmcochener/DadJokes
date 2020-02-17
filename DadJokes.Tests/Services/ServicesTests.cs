@@ -13,18 +13,19 @@ namespace DadJokes.Tests.Services
     [TestClass]
     public class ServicesTest
     {
+        private APIService service = new APIService();
+
         [TestMethod]
         public void APIService()
         {
             //Arrange
-            string url = "https://icanhazdadjoke.com/j/EQKZDIeah";
-            APIService service = new APIService();
+            string url = "https://icanhazdadjoke.com/";
 
             //Act
             var response = service.APIConnect(url);
 
             //Assert
-            Assert.IsNotNull(response.Result);
+            Assert.IsTrue(response.Result.IsSuccessStatusCode);
         }
 
         [TestMethod]
@@ -32,7 +33,6 @@ namespace DadJokes.Tests.Services
         {
             //Arrange
             string url = "https://icanhazdadjoke.com/j/EQKZDIeah";
-            APIService service = new APIService();
 
             //Act
             Joke _joke = service.GetRandomJoke(url).Result;
@@ -47,7 +47,6 @@ namespace DadJokes.Tests.Services
         {
             //Arrange
             string url = "https://icanhazdadjoke.com/search?term=funny";
-            APIService service = new APIService();
 
             //Act
             List<DisplayJoke> _jokes = service.GetManyJokes(url).Result;

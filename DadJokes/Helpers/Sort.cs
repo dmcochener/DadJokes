@@ -6,12 +6,13 @@ using System.Web;
 
 namespace DadJokes.Helpers
 {
-    public class Sort
+    public static class Sort
     {
         //Creating a simple sort method based on word count
         //This reduces the BigO notation versus the built in Sort method
-        public Dictionary<string,List<DisplayJoke>> SortResponses(List<DisplayJoke> responses)
+        public static Dictionary<string,List<DisplayJoke>> SortResponses(List<DisplayJoke> responses)
         {
+            //Create base dictionary for sorting jokes by length
             Dictionary<string, List<DisplayJoke>> sortedResponses = new Dictionary<string, List<DisplayJoke>>
             {
                 {"shortJoke", new List<DisplayJoke>() },
@@ -19,7 +20,7 @@ namespace DadJokes.Helpers
                 {"longJoke", new List<DisplayJoke>() }
 
             };
-
+            //Sort each joke by word count, assumes that value is set
             foreach (DisplayJoke joke in responses)
             {
                 if (joke.WordCount < 10)

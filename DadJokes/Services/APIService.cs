@@ -8,10 +8,11 @@ using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Threading.Tasks;
 using System.Web;
+using System.Web.Http;
 
 namespace DadJokes.Services
 {
-    public class APIService
+    public class APIService: ApiController
     {
         public async Task<Joke> GetRandomJoke(string url)
         {
@@ -73,7 +74,7 @@ namespace DadJokes.Services
                 client.DefaultRequestHeaders.Accept.Add(
                     new MediaTypeWithQualityHeaderValue("application/json"));
 
-                HttpResponseMessage response = await client.GetAsync(url);
+                HttpResponseMessage response = await client.GetAsync(url).ConfigureAwait(false);
 
                 return response;
             }

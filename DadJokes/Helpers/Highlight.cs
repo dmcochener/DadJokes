@@ -7,12 +7,15 @@ using System.Web;
 
 namespace DadJokes.Helpers
 {
-    public class Filter
+    public static class Highlight
     {
-        public List<DisplayJoke> HighlightJokeTerm(List<DisplayJoke> jokes, string term)
+        public static List<DisplayJoke> HighlightJokeTerm(List<DisplayJoke> jokes, string term)
         {
+            //Creates a string to highlight the term
             string replace = term.ToUpper();
+            //Regular expression to find the term
             Regex regEx = new Regex(term);
+            //Iterate through jokes replacing the term with the replace string
             foreach(var joke in jokes)
             {
                 joke.HighlightContent = regEx.Replace(joke.joke, replace);

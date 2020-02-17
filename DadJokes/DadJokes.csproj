@@ -138,7 +138,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Helpers\CountWords.cs" />
-    <Compile Include="Helpers\Filter.cs" />
+    <Compile Include="Helpers\Highlight.cs" />
     <Compile Include="Helpers\Sort.cs" />
     <Compile Include="Models\DisplayJoke.cs" />
     <Compile Include="Models\Joke.cs" />

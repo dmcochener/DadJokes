@@ -7,9 +7,9 @@ using System.Web;
 
 namespace DadJokes.Helpers
 {
-    public class CountWords
+    public static class CountWords
     {
-        public List<DisplayJoke> SetWordCount(List<DisplayJoke> jokes)
+        public static List<DisplayJoke> SetWordCount(List<DisplayJoke> jokes)
         {
             
             Regex regEx = new Regex("[\\w-]+");

@@ -16,7 +16,6 @@ namespace DadJokes.Tests.Helpers
         public void SortJokes()
         {
             //Arrange
-            Sort sorter = new Sort();
             List<DisplayJoke> testJokes = new List<DisplayJoke>
             {
                 new DisplayJoke{WordCount = 5 },
@@ -28,7 +27,7 @@ namespace DadJokes.Tests.Helpers
             };
 
             //Act
-            var sortResult = sorter.SortResponses(testJokes);
+            var sortResult = Sort.SortResponses(testJokes);
 
             //Assert
             Assert.AreEqual(sortResult["shortJoke"].Count, 1);
@@ -41,14 +40,13 @@ namespace DadJokes.Tests.Helpers
         public void WordCount()
         {
             //Arrange
-            CountWords counter = new CountWords();
             List<DisplayJoke> testJokes = new List<DisplayJoke>
             {
                 new DisplayJoke {joke = "This is a test for seven words."}
             };
 
             //Act
-            var countedWords = counter.SetWordCount(testJokes);
+            var countedWords = CountWords.SetWordCount(testJokes);
 
             //Assert
             Assert.AreEqual(countedWords[0].WordCount, 7);
@@ -59,14 +57,14 @@ namespace DadJokes.Tests.Helpers
         public void HighlightText()
         {
             //Arrange
-            Filter filter = new Filter();
+
             List<DisplayJoke> testJokes = new List<DisplayJoke>
             {
                 new DisplayJoke {joke = "This is a test for seven words."}
             };
 
             //Act
-            var HighlightWord = filter.HighlightJokeTerm(testJokes, "is");
+            var HighlightWord = Highlight.HighlightJokeTerm(testJokes, "is");
 
             Assert.AreEqual(HighlightWord[0].HighlightContent,"ThIS IS a test for seven words.");
         }
