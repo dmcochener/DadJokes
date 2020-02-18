@@ -12,8 +12,26 @@ using System.Web.Http;
 
 namespace DadJokes.Services
 {
-    public class APIService : ApiController
+    public sealed class APIService : ApiController
     {
+        //Code to make service a Singleton to reduce instances
+        private APIService()
+        {
+
+        }
+        private static APIService service = null;
+        public static APIService Service
+        {
+            get
+            {
+                if (service == null)
+                {
+                    service = new APIService();
+                }
+                return service;
+            }
+        }
+
         public JokeResponse GetRandomJoke(string url)
         {
             //Gets response from API
