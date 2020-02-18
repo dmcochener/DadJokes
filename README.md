@@ -1,4 +1,6 @@
 # DadJokes
+![Welcome to Dad Jokes](https://github.com/dmcochener/DadJokes/blob/master/dadjokes.PNG)
+
 ---
 
 Looking for some _good jokes_? This might not be the program for you.
