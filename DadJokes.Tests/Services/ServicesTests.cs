@@ -13,16 +13,18 @@ namespace DadJokes.Tests.Services
     [TestClass]
     public class ServicesTest
     {
-        private APIService service = new APIService();
-
+        //Create instance of wrapper for testing
+        APIWrapper _APIWrapper = new APIWrapper();
+       
         [TestMethod]
         public void APIService()
         {
+            
             //Arrange
             string url = "https://icanhazdadjoke.com/";
 
             //Act
-            var response = service.APIConnect(url);
+            var response = _APIWrapper.APIConnect(url);
 
             //Assert
             Assert.IsNotNull(response.Result);
@@ -35,7 +37,7 @@ namespace DadJokes.Tests.Services
             string url = "https://icanhazdadjoke.com/j/EQKZDIeah";
 
             //Act
-            Joke _joke = service.GetRandomJoke(url);
+            Joke _joke = _APIWrapper.GetRandomJoke(url);
 
             //Assert
             Assert.AreEqual(_joke.id, "EQKZDIeah");
@@ -49,10 +51,11 @@ namespace DadJokes.Tests.Services
             string url = "https://icanhazdadjoke.com/search?term=funny";
 
             //Act
-            List<DisplayJoke> _jokes = service.GetManyJokes(url);
+            List<DisplayJoke> _jokes = _APIWrapper.GetManyJokes(url);
 
             //Assert
             Assert.AreEqual(_jokes.Count, 2);
         }
+
     }
 }
